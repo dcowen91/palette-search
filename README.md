@@ -1,4 +1,4 @@
-"# palette-search" 
+# palette-search
 
 TODOS
 * add proper CLI handling/messaging
