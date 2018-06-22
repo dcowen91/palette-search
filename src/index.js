@@ -6,12 +6,6 @@ function buildRgb(hexString) {
 }
 
 function paletteSearch(inputColor, palette) {
-	// const inputColor= "#d10202";
-	// const palette = {
-	// 	"red-rich": "#a80202",
-	// 	"red-dark": "#d10909"
-	// }
-
 	const inputHex = inputColor.replace("#", "");
 	const inputRgb = buildRgb(inputHex);
 
@@ -30,7 +24,6 @@ function paletteSearch(inputColor, palette) {
 	}
 
 	return result;
-	// return {name: result, hex: palette[result]};
 }
 
 module.exports = {paletteSearch}

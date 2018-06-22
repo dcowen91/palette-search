@@ -1,18 +1,18 @@
 {
   "name": "palette-search",
   "version": "0.9.0",
-  "description": "color finder",
-  "main": "src\\index.js",
-  
+  "description": "given a hex color and a color palette JSON file, find the closest match",
+  "main": "src/index.js",
   "bin": {
     "palette-search": "src/cli.js"
   },
   "keywords": [
     "color",
-    "palette"
+    "palette",
+    "theme"
   ],
   "author": "dcowen91@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "euclidean-distance": "^1.0.0"
   }

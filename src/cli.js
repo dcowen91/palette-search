@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const {paletteSearch} = require("./index");
+
+const { paletteSearch } = require("./index");
 const fs = require("fs");
 
 const inputColor = process.argv[2];
