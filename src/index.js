@@ -1,19 +1,22 @@
-
-var distance = require('euclidean-distance')
+var distance = require('euclidean-distance');
 
 function buildRgb(hexString) {
-	return [parseInt(hexString.substring(0, 2), 16), parseInt(hexString.substring(2, 4), 16), parseInt(hexString.substring(2, 4), 16)]
+	return [
+		parseInt(hexString.substring(0, 2), 16),
+		parseInt(hexString.substring(2, 4), 16),
+		parseInt(hexString.substring(2, 4), 16)
+	];
 }
 
 function paletteSearch(inputColor, palette) {
-	const inputHex = inputColor.replace("#", "");
+	const inputHex = inputColor.replace('#', '');
 	const inputRgb = buildRgb(inputHex);
 
 	let shortest = -1;
-	let result = "";
+	let result = '';
 
-	for( const colorName in palette) {
-		const hexString = palette[colorName].replace("#", "");
+	for (const colorName in palette) {
+		const hexString = palette[colorName].replace('#', '');
 		currentRgb = buildRgb(hexString);
 
 		const diff = distance(inputRgb, currentRgb);
@@ -26,4 +29,4 @@ function paletteSearch(inputColor, palette) {
 	return result;
 }
 
-module.exports = {paletteSearch}
+module.exports = { paletteSearch };
