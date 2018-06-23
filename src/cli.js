@@ -3,22 +3,15 @@
 const { paletteSearch } = require('./index');
 const fs = require('fs');
 
-// Validate input params
-if (process.argv.length != 4) {
-	printUsage();
-}
-// Validate input color
-else if (process.argv[2].length < 6 || process.argv[2].length > 7) {
-	printUsage();
-} else {
-	const inputColor = process.argv[2];
-	const inputFile = process.argv[3];
+const invalidArgLength = () => process.argv.length != 4;
 
+const invalidColorArg = () => process.argv[2].length != 7;
+
+function tryParseThemeJson(fileName) {
 	try {
-		const palette = JSON.parse(fs.readFileSync(inputFile));
-		console.log(paletteSearch(inputColor, palette));
+		return JSON.parse(fs.readFileSync(fileName));
 	} catch (e) {
-		printUsage();
+		return;
 	}
 }
 
@@ -30,4 +23,13 @@ function printUsage() {
 		"\t<theme.json>: a JSON file containing a list of named colors i.e. {'red': '#FF0000'}"
 	];
 	console.log(output.join('\n'));
+}
+
+if (invalidArgLength() || invalidColorArg()) {
+	printUsage();
+} else {
+	const inputColor = process.argv[2];
+	const theme = tryParseThemeJson(process.argv[3]);
+
+	theme ? console.log(paletteSearch(inputColor, theme)) : printUsage();
 }
